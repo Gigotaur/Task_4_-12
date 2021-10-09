@@ -5,8 +5,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        double x, n, ans;
-        double i = 0;
+        double x, n;
+        double numerator=0;
+        double denominator=0;
+        double i = 1;
 
         Scanner num = new Scanner(System.in);
         System.out.println("Введите вещественное число");
@@ -21,19 +23,22 @@ public class Main {
             System.out.println("Выражения не верное");
             return;
         }
-            ans = calculateAnswer(x, n, i);
+            float ans = (float) calculateAnswer(x, n, i, numerator, denominator);
             System.out.printf("Ответом выражения является %.4f%n", ans);
         }
 
-   private static double calculateAnswer(double x, double n, double i){
-        while (i < n){
-            double ans = ans*(x-2*n)/(x-2*n-1);
-            i = i++;
-            return ans;
+    private static double calculateAnswer(double x, double n, double i, double numenator, double denominator) {
+        float ans =0;
+        for (i = 1; i < n; i++)
+        {
+            numenator = (x - 2 * i);
+            denominator = (x - 2 * i - 1);
+            ans = (float) (numenator / denominator);
         }
+        return ans;
     }
 
-    private static boolean checkThisOut(double x, double n){
-            return (n > 0 && x!=2*n-1);
+    private static boolean checkThisOut(double denuminator, double n){
+            return (n > 0 && denuminator!=0);
     }
 }
