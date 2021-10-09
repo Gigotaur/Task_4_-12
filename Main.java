@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Введите натуральное число");
         n = num.nextDouble();
 
-        if (checkThisOut(x, n)){
+        if (checkThisOut(denominator, n)){
             System.out.println("Выражение верное");
         }
             else{
