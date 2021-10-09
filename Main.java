@@ -1,44 +1,49 @@
 package com.company;
 
+import java.util.Locale;
 import java.util.Scanner;
 
-public class Main {
+public class Main{
 
     public static void main(String[] args) {
-        double x, n;
-        double numerator=0;
-        double denominator=0;
-        double i = 1;
+        Locale.setDefault(Locale.ROOT);
+
+        double x;
+        int n;
 
         Scanner num = new Scanner(System.in);
         System.out.println("Введите вещественное число");
         x = num.nextDouble();
         System.out.println("Введите натуральное число");
-        n = num.nextDouble();
+        n = num.nextInt();
 
-        if (checkThisOut(denominator, n)){
-            System.out.println("Выражение верное");
-        }
-            else{
-            System.out.println("Выражения не верное");
-            return;
-        }
-            float ans = (float) calculateAnswer(x, n, i, numerator, denominator);
-            System.out.printf("Ответом выражения является %.4f%n", ans);
-        }
+        if (n > 0) {
+            double ans = calculateAnswer(x, n);
 
-    private static double calculateAnswer(double x, double n, double i, double numenator, double denominator) {
-        float ans =0;
-        for (i = 1; i < n; i++)
-        {
-            numenator = (x - 2 * i);
-            denominator = (x - 2 * i - 1);
-            ans = (float) (numenator / denominator);
+            if (ans == Double.NEGATIVE_INFINITY || ans == Double.POSITIVE_INFINITY) {
+                System.out.printf("Знаменатель дроби равен нулю.%n");
+            } else {
+                System.out.printf("Ответом выражения является %.4f%n", ans);
+            }
         }
-        return ans;
+        else {
+            System.out.println("Значение n введено некорректно. Пожалуйста, повторите попытку");
+        }
     }
 
-    private static boolean checkThisOut(double denuminator, double n){
-            return (n > 0 && denuminator!=0);
+
+    private static double calculateAnswer(double x, double n) {
+        double ans = 1;
+        double numinator = 1;
+        double denuminator = 1;
+
+        for (int i = 1; i <= n; i++)
+        {
+            numinator *= (x - (2 * i));
+            denuminator *= (x - (2 * i - 1));
+        }
+        ans = numinator / denuminator;
+
+        return ans;
     }
 }
