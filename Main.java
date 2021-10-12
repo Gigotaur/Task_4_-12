@@ -15,7 +15,7 @@ public class Main{
         System.out.println("Введите вещественное число");
         x = num.nextDouble();
         System.out.println("Введите натуральное число");
-        n = num.nextInt();
+        n = num.nextDouble();
 
         if (n > 0) {
             double ans = calculateAnswer(x, n);
