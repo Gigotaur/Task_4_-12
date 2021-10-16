@@ -7,15 +7,8 @@ public class Main{
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ROOT);
-
-        double x;
-        int n;
-
-        Scanner num = new Scanner(System.in);
-        System.out.println("Введите вещественное число");
-        x = num.nextDouble();
-        System.out.println("Введите натуральное число");
-        n = num.nextDouble();
+        double x= enter("Введите вещественное число: ");
+        double n = enter("Введите натуральное число: ");
 
         if (n > 0) {
             double ans = calculateAnswer(x, n);
@@ -31,6 +24,13 @@ public class Main{
         }
     }
 
+    private static double enter(String text){
+        System.out.println(text);
+        Scanner input = new Scanner(System.in);
+        double num;
+        num = input.nextDouble();
+        return num;
+    }
 
     private static double calculateAnswer(double x, double n) {
         double ans = 1;
