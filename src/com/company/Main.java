@@ -13,7 +13,7 @@ public class Main {
         if (n > 0) {
             double ans = calculateAnswer(x, n);
 
-            if (checkNum(ans)) {
+            if (isNumberPositive(ans)) {
                 System.out.printf("Знаменатель дроби равен нулю.%n");
             } else {
                 System.out.printf("Ответом выражения является %.4f%n", ans);
@@ -45,7 +45,7 @@ public class Main {
         return ans;
     }
 
-    private static boolean checkNum(double ans) {
+    private static boolean isNumberPositive(double ans) {
         return ((ans == Double.NEGATIVE_INFINITY || ans == Double.POSITIVE_INFINITY));
     }
 }
